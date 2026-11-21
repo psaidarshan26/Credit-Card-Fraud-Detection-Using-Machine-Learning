@@ -1,39 +1,46 @@
-# Credit-Card-Fraud-Detection-Using-Machine-Learning
-Machine Learning-based credit card fraud detection system that identifies fraudulent transactions using classification algorithms, class imbalance handling techniques, SMOTE, and neural networks.
+# Credit Card Fraud Detection
 
-What is this project about?
-This project focuses on identifying fraudulent credit card transactions using Machine Learning algorithms.
-The main problem is that most credit card transactions are legitimate, while only a very small percentage are fraudulent.
-This creates an imbalanced dataset, making it difficult for machine learning models to identify fraud correctly.
-The project applies different techniques to handle this problem and improve fraud detection.
+A binary classification project to identify potentially fraudulent credit-card transactions. The original dataset is highly imbalanced, so random under-sampling is applied to the training set only.
 
-What does the project do?
-- Analyzes credit card transaction data.
-- Identifies the imbalance between fraudulent and legitimate transactions.
-- Uses Random Under-Sampling to balance the dataset.
-- Uses SMOTE (Synthetic Minority Over-sampling Technique) to generate synthetic fraud samples.
-- Identifies outliers using the IQR method.
-- Applies dimensionality reduction techniques such as PCA and t-SNE.
-- Trains different classification algorithms.
-- Compares model performance using confusion matrices, precision, recall, F1-score, and ROC curves.
-- Compares neural network performance on under-sampled and over-sampled datasets.
+## Dataset
+Download the Kaggle **Credit Card Fraud Detection** dataset and place `creditcard.csv` in `data/`.
 
-Machine Learning algorithms and techniques:
-- Logistic Regression
-- K-Nearest Neighbors (KNN)
-- Support Vector Machine (SVM)
-- Decision Tree
-- Neural Networks
-- SMOTE
-- PCA
-- t-SNE
+The CSV should contain transaction features and a target column named `Class` (`0` = legitimate, `1` = fraud).
 
-Technologies used:
-- Python
-- NumPy
-- Pandas
-- Matplotlib
-- Seaborn
-- Scikit-learn
-- TensorFlow / Keras
-- Imbalanced-learn
+## Run
+```bash
+pip install -r requirements.txt
+python main.py
+```
+
+## Example output format
+```text
+Dataset shape: (number_of_rows, number_of_columns)
+
+Class distribution (%):
+0    [legitimate transaction percentage]
+1    [fraud transaction percentage]
+
+Confusion matrix:
+[[true_negatives false_positives]
+ [false_negatives true_positives]]
+
+Classification report:
+              precision    recall  f1-score   support
+           0       ...
+           1       ...
+
+ROC-AUC: [score]
+Fraud detection training and evaluation completed.
+```
+Metrics vary with the dataset and train/test split. Fraud detection should be judged using precision, recall, F1-score and ROC-AUC, not accuracy alone.
+
+## Repository structure
+```text
+credit-card-fraud-detection-ml/
+├── data/
+│   └── creditcard.csv
+├── main.py
+├── requirements.txt
+└── README.md
+```
